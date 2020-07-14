@@ -18,7 +18,8 @@ function clearSelection() {
 const defaultMessage = "Copy to clipboard: #{key}, Enter";
 
 function format(message) {
-  const copyKey = `${/mac os x/i.test(navigator.userAgent) ? "⌘" : "Ctrl"} C`;
+  // const copyKey = `${/mac os x/i.test(navigator.userAgent) ? "⌘" : "Ctrl"} C`;
+  const copyKey = (/mac os x/i.test(navigator.userAgent) ? "⌘" : "Ctrl") + "C";
   return message.replace(/#{\s*key\s*}/g, copyKey);
 };
 
