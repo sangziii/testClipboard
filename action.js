@@ -1,5 +1,5 @@
 // selection 초기화
-const clearSelection = () => {
+function clearSelection() {
   const sel = document.selection;
   if (sel && sel.empty) {
     sel.empty();
@@ -17,17 +17,17 @@ const clearSelection = () => {
 
 const defaultMessage = "Copy to clipboard: #{key}, Enter";
 
-const format = (message) => {
+function format(message) {
   const copyKey = `${/mac os x/i.test(navigator.userAgent) ? "⌘" : "Ctrl"} C`;
   return message.replace(/#{\s*key\s*}/g, copyKey);
 };
 
-const copyToClipboard = (text) => {
-  let message;
-  let range;
-  let selection;
-  let mark;
-  let success = false;
+function copyToClipboard(text) {
+  var message;
+  var range;
+  var selection;
+  var mark;
+  var success = false;
 
   try {
     clearSelection();
@@ -99,6 +99,7 @@ const txt = document.getElementById("targetTxt").textContent;
 const btn = document.getElementById("btn");
 
 btn.addEventListener("click", (e) => {
+  console.log("click!!!");
   e.preventDefault();
   copyToClipboard(txt);
 });
