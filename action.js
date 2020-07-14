@@ -18,7 +18,7 @@ function clearSelection() {
 const defaultMessage = "Copy to clipboard: #{key}, Enter";
 
 function format(message) {
-  // const copyKey = `${/mac os x/i.test(navigator.userAgent) ? "⌘" : "Ctrl"} C`;
+
   const copyKey = (/mac os x/i.test(navigator.userAgent) ? "⌘" : "Ctrl") + "C";
   return message.replace(/#{\s*key\s*}/g, copyKey);
 };
@@ -49,7 +49,7 @@ function copyToClipboard(text) {
     mark.style.MozUserSelect = "text";
     mark.style.msUserSelect = "text";
     mark.style.userSelect = "text";
-    mark.addEventListener("copy", (e) => {
+    mark.addEventListener("copy", function (e) {
       e.stopPropagation();
       e.preventDefault();
       if (typeof e.clipboardData === "undefined") {
@@ -99,7 +99,7 @@ function copyToClipboard(text) {
 const txt = document.getElementById("targetTxt").textContent;
 const btn = document.getElementById("btn");
 
-btn.addEventListener("click", (e) => {
+btn.addEventListener("click", function (e){
   console.log("click!!!");
   e.preventDefault();
   copyToClipboard(txt);
